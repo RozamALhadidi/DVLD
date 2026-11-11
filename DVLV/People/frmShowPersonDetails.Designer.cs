@@ -33,26 +33,28 @@
             // 
             // uctrlPersonDetails1
             // 
-            this.uctrlPersonDetails1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.uctrlPersonDetails1.Location = new System.Drawing.Point(6, 2);
+            this.uctrlPersonDetails1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.uctrlPersonDetails1.Location = new System.Drawing.Point(32, 129);
             this.uctrlPersonDetails1.Name = "uctrlPersonDetails1";
-            this.uctrlPersonDetails1.Size = new System.Drawing.Size(1684, 781);
+            this.uctrlPersonDetails1.Size = new System.Drawing.Size(1608, 852);
             this.uctrlPersonDetails1.TabIndex = 0;
             // 
             // frmShowPersonDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1688, 783);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ClientSize = new System.Drawing.Size(1820, 1035);
             this.Controls.Add(this.uctrlPersonDetails1);
             this.Name = "frmShowPersonDetails";
             this.Text = "frmShowPersonDetails";
+            this.Load += new System.EventHandler(this.frmShowPersonDetails_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
+        private DarkButton darkButton1;
         private uctrlPersonDetails uctrlPersonDetails1;
     }
 }

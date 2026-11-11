@@ -14,34 +14,51 @@ namespace DVLV.People
 {
     public partial class uctrlPersonDetails : UserControl
     {
+        public event Action OnCloseClicked;
+        short _PersonID = -1;
         public uctrlPersonDetails()
         {
+
             InitializeComponent();
+
         }
 
         public void ShowDetails(clsPerson Person)
         {
             lblAddress.Text = Person.Address.ToString();
-            lblCountry.Text = Person.NationalityCountryID.ToString();
+
+            clsCountries Country = clsCountries.FindCountry(Person.NationalityCountryID);
+            lblCountry.Text = (Country != null) ? Country.CountryName.ToString() : "Unknown";
+         
+
             lblDateOfBirth.Text = Person.DateOfBirth.ToString();
             lblEmail.Text = Person.Email.ToString();
-            lblGender.Text = Person.Gender.ToString();
-            lblName.Text = Person.FirstName.ToString() + Person.LastName.ToString();
+            lblGender.Text = (Person.Gender == 0) ? "Male" : "Female";
+            lblName.Text = Person.FirstName.ToString() + " " + Person.SecondName.ToString() +
+                " " + Person.ThirdName.ToString() + " " + Person.LastName.ToString();
             lblNationalNo.Text = Person.NationalityNo.ToString();
             lblPersonID.Text = Person.PersonID.ToString();
             lblPhone.Text = Person.Phone.ToString();
             pbPerson.SizeMode = PictureBoxSizeMode.Zoom;
 
-            if (!string.IsNullOrEmpty(Person.ImagePath) && System.IO.File.Exists(Person.ImagePath))
-            {
-                pbPerson.Load(Person.ImagePath);
-            }
-            else
-            {
-                pbPerson.Image = (Person.Gender == 0) ? Properties.Resources.MaleDefault : Properties.Resources.FemaleDefault;
-            }
-            pbPerson.Load(Person.ImagePath);
+            _PersonID = Person.PersonID;
 
+            Image defaultImg = (Person.Gender == 0) ? Properties.Resources.MaleDefault : Properties.Resources.FemaleDefault;
+            pbPerson.LoadImageSafe(Person.ImagePath, defaultImg);
+
+         
+
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            OnCloseClicked?.Invoke();
+        }
+
+        private void btnEditInfo_Click(object sender, EventArgs e)
+        {
+            Form frm = new frmUpdatePersonDetails(_PersonID);
+            frm.ShowDialog();
         }
     }
 }

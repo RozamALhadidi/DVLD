@@ -54,11 +54,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="People\uctrlAddNewPerson.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="People\uctrlAddNewPerson.Designer.cs">
+      <DependentUpon>uctrlAddNewPerson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Theme\DarkButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="People\frmAddNewPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="People\frmAddNewPerson.Designer.cs">
+      <DependentUpon>frmAddNewPerson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="People\frmUpdatePersonDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="People\frmUpdatePersonDetails.Designer.cs">
+      <DependentUpon>frmUpdatePersonDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="People\frmShowPersonDetails.cs">
       <SubType>Form</SubType>
@@ -74,14 +95,36 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="People\uctrlUpdatePerson.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="People\uctrlUpdatePerson.Designer.cs">
+      <DependentUpon>uctrlUpdatePerson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Theme\AppTheme.cs" />
+    <Compile Include="Theme\DarkPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="People\frmAddNewPerson.resx">
+      <DependentUpon>frmAddNewPerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="People\frmUpdatePersonDetails.resx">
+      <DependentUpon>frmUpdatePersonDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="People\frmShowPersonDetails.resx">
       <DependentUpon>frmShowPersonDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="People\uctrlAddNewPerson.resx">
+      <DependentUpon>uctrlAddNewPerson.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="People\uctrlPersonDetails.resx">
       <DependentUpon>uctrlPersonDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="People\uctrlUpdatePerson.resx">
+      <DependentUpon>uctrlUpdatePerson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -235,6 +278,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-earth-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-female-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-user-30.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
