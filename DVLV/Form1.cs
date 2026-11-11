@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DVLD_BusinessLayers;
+using DVLV;
+using DVLV.People;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,28 +10,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DVLD_BusinessLayers;
-using DVLV.People;
 
 namespace DVLD
 {
     public partial class Form1 : Form
     {
-
         public Form1()
         {
             InitializeComponent();
 
         }
 
-    
-
         private void materialButton1_Click(object sender, EventArgs e)
         {
             short.TryParse(tb1.Text, out short id);
 
             clsPerson Person = clsPerson.GetUserByID(id);
-            
+
+
 
             if (Person != null)
             {
@@ -38,6 +37,23 @@ namespace DVLD
             }
             else
                 tb2.Text = "name is not found";
+        }
+
+        private void darkButton1_Click(object sender, EventArgs e)
+        {
+            Form frm = new frmUpdatePersonDetails();
+            frm.ShowDialog();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.BackColor = AppTheme.FormBackColor;
+        }
+
+        private void darkButton2_Click(object sender, EventArgs e)
+        {
+            Form frm = new frmAddNewPerson();
+            frm.ShowDialog();
         }
     }
 }

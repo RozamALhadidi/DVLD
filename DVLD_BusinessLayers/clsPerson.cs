@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -91,7 +92,15 @@ namespace DVLD_BusinessLayers
                 , this.Address, this.ImagePath);
         }
 
+        public static bool DeletePerson(short PersonID)
+        {
+            return clsPersonDataAccess.DeletePerson(PersonID);
+        }
 
+        public static DataTable GetAllPeople()
+        {
+            return clsPersonDataAccess.GetAllPeople();
+        }
 
         public bool Save()
         {

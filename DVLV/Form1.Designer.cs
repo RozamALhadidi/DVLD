@@ -32,6 +32,8 @@
             this.tb1 = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
             this.tb2 = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
             this.crownGroupBox1 = new ReaLTaiizor.Controls.CrownGroupBox();
+            this.darkButton1 = new DVLV.DarkButton();
+            this.darkButton2 = new DVLV.DarkButton();
             this.crownGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -151,14 +153,50 @@
             this.crownGroupBox1.TabStop = false;
             this.crownGroupBox1.Text = "crownGroupBox1";
             // 
+            // darkButton1
+            // 
+            this.darkButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.darkButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.darkButton1.FlatAppearance.BorderSize = 0;
+            this.darkButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.darkButton1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.darkButton1.ForeColor = System.Drawing.Color.White;
+            this.darkButton1.Location = new System.Drawing.Point(556, 52);
+            this.darkButton1.Name = "darkButton1";
+            this.darkButton1.Size = new System.Drawing.Size(337, 113);
+            this.darkButton1.TabIndex = 7;
+            this.darkButton1.Text = "darkButton1";
+            this.darkButton1.UseVisualStyleBackColor = false;
+            this.darkButton1.Click += new System.EventHandler(this.darkButton1_Click);
+            // 
+            // darkButton2
+            // 
+            this.darkButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.darkButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.darkButton2.FlatAppearance.BorderSize = 0;
+            this.darkButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.darkButton2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.darkButton2.ForeColor = System.Drawing.Color.White;
+            this.darkButton2.Location = new System.Drawing.Point(953, 52);
+            this.darkButton2.Name = "darkButton2";
+            this.darkButton2.Size = new System.Drawing.Size(337, 113);
+            this.darkButton2.TabIndex = 8;
+            this.darkButton2.Text = "darkButton2";
+            this.darkButton2.UseVisualStyleBackColor = false;
+            this.darkButton2.Click += new System.EventHandler(this.darkButton2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(2017, 845);
+            this.Controls.Add(this.darkButton2);
+            this.Controls.Add(this.darkButton1);
             this.Controls.Add(this.crownGroupBox1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.crownGroupBox1.ResumeLayout(false);
             this.crownGroupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -170,6 +208,8 @@
         private ReaLTaiizor.Controls.MaterialMaskedTextBox tb1;
         private ReaLTaiizor.Controls.MaterialMaskedTextBox tb2;
         private ReaLTaiizor.Controls.CrownGroupBox crownGroupBox1;
+        private DVLV.DarkButton darkButton1;
+        private DVLV.DarkButton darkButton2;
     }
 }
 

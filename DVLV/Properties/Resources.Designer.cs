@@ -263,6 +263,16 @@ namespace DVLV.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_female_30 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-female-30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_gender_24 {
             get {
                 object obj = ResourceManager.GetObject("icons8-gender-24", resourceCulture);
@@ -476,6 +486,16 @@ namespace DVLV.Properties {
         internal static System.Drawing.Bitmap icons8_phone_501 {
             get {
                 object obj = ResourceManager.GetObject("icons8-phone-501", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_user_30 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-user-30", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
