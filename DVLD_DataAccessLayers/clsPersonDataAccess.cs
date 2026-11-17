@@ -14,7 +14,7 @@ namespace DVLD_DataAccessLayers
     {
         
 
-        public static bool GetUserByID(short PersonId, ref string NationalNo,
+        public static bool GetPersonByID(short PersonId, ref string NationalNo,
             ref short NationalityCountryID, ref string FirstName,
             ref string SecondName, ref string ThirdName, ref string LastName,
             ref DateTime DateOfBirth,ref short gender, ref string email, ref string phone,
@@ -215,7 +215,11 @@ namespace DVLD_DataAccessLayers
             DataTable dt = new DataTable();
 
             SqlConnection con = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            string query = "select * from People";
+            string query = @"SELECT PersonID, NationalNo, FirstName, SecondName, 
+                                    ThirdName, LastName, DateOfBirth, Gendor as Gender, 
+                                    Address, Phone, Email, NationalityCountryID 
+                             FROM People";
+
             SqlCommand cmd = new SqlCommand(query, con);
 
 
@@ -229,6 +233,42 @@ namespace DVLD_DataAccessLayers
                 }
             }
             catch(Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Error: " + ex.Message);
+
+            }
+            finally
+            {
+                con.Close();
+            }
+            return dt;
+        }
+
+    
+    public static DataTable GetAllPeopleForDGV()
+        {
+            DataTable dt = new DataTable();
+
+            SqlConnection con = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"SELECT People.PersonID, People.NationalNo, People.FirstName, 
+                People.SecondName,  People.ThirdName, People.LastName, People.DateOfBirth,
+                People.Gendor as Gender, People.Address, People.Phone, 
+                People.Email ,Countries.CountryName AS Nationality
+                             FROM People INNER JOIN Countries ON People.NationalityCountryID = Countries.CountryID";
+
+            SqlCommand cmd = new SqlCommand(query, con);
+
+
+            try
+            {
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    dt.Load(reader);
+                }
+            }
+            catch (Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show("Error: " + ex.Message);
 
