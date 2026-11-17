@@ -52,7 +52,7 @@ namespace DVLD_BusinessLayers
 
 
 
-        public static clsPerson GetUserByID(short PersonId)
+        public static clsPerson GetPersonByID(short PersonId)
         {
             short NationalityCountryID = -1,Gender = -1;
             string FirstName = "", SecondName = "", ThirdName = "", LastName = ""
@@ -61,7 +61,7 @@ namespace DVLD_BusinessLayers
             DateTime DateOfBirth = DateTime.Now;
 
 
-            if (clsPersonDataAccess.GetUserByID(PersonId,ref NationalityNo, ref NationalityCountryID,
+            if (clsPersonDataAccess.GetPersonByID(PersonId,ref NationalityNo, ref NationalityCountryID,
                ref FirstName,ref SecondName,ref ThirdName,ref LastName,ref DateOfBirth,
                ref Gender ,ref Email,ref Phone,ref Address,ref ImagePath))
             {
@@ -101,6 +101,12 @@ namespace DVLD_BusinessLayers
         {
             return clsPersonDataAccess.GetAllPeople();
         }
+        public static DataTable GetAllPeopleForDGV()
+        {
+            return clsPersonDataAccess.GetAllPeopleForDGV();
+        }
+        
+
 
         public bool Save()
         {
@@ -120,5 +126,8 @@ namespace DVLD_BusinessLayers
             }
             return false;
         }
+
+         
+
     }
 }

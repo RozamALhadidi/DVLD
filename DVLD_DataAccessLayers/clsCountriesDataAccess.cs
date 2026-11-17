@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -43,6 +44,38 @@ namespace DVLD_DataAccessLayers
             }
             return isfound;
         }
+
+        public static DataTable GetAllCountries()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection con = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = "select CountryName,CountryID from Countries order by CountryName";
+
+            SqlCommand cmd = new SqlCommand(query, con);
+
+            try
+            {
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dt.Load(reader);
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return dt;
+        }
+
+         
 
     }
 }
