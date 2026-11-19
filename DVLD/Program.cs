@@ -16,6 +16,7 @@ namespace DVLD
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            clsAppSettings.EnsureFoldersExist();
             Application.Run(new App());
         }
     }

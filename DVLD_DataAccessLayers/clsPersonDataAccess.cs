@@ -94,7 +94,7 @@ namespace DVLD_DataAccessLayers
             cmd.Parameters.AddWithValue("@ThirdName", string.IsNullOrEmpty(ThirdName) ? (object)DBNull.Value : ThirdName);
             cmd.Parameters.AddWithValue("@LastName", LastName);
             cmd.Parameters.AddWithValue("@DateOfBirth", DateOfBirth);
-            cmd.Parameters.AddWithValue("@Gendor", Gender);
+            cmd.Parameters.AddWithValue("@Gender", Gender);
             cmd.Parameters.AddWithValue("@Address", Address);
             cmd.Parameters.AddWithValue("@Phone", Phone);
             cmd.Parameters.AddWithValue("@Email", Email);

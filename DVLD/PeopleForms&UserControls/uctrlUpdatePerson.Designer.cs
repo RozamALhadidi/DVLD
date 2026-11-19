@@ -94,7 +94,7 @@
             // 
             this.OuterPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(189)))), ((int)(((byte)(248)))));
             this.OuterPanel.Controls.Add(this.InnerPannel);
-            this.OuterPanel.Location = new System.Drawing.Point(56, 240);
+            this.OuterPanel.Location = new System.Drawing.Point(56, 280);
             this.OuterPanel.Name = "OuterPanel";
             this.OuterPanel.Size = new System.Drawing.Size(1480, 624);
             this.OuterPanel.TabIndex = 51;
@@ -585,7 +585,7 @@
             this.crownLabel17.AutoSize = true;
             this.crownLabel17.Font = new System.Drawing.Font("Alexandria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.crownLabel17.ForeColor = System.Drawing.Color.White;
-            this.crownLabel17.Location = new System.Drawing.Point(108, 159);
+            this.crownLabel17.Location = new System.Drawing.Point(108, 218);
             this.crownLabel17.Name = "crownLabel17";
             this.crownLabel17.Size = new System.Drawing.Size(166, 49);
             this.crownLabel17.TabIndex = 36;
@@ -607,7 +607,7 @@
             this.lblID.AutoSize = true;
             this.lblID.Font = new System.Drawing.Font("Alexandria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(189)))), ((int)(((byte)(248)))));
-            this.lblID.Location = new System.Drawing.Point(388, 170);
+            this.lblID.Location = new System.Drawing.Point(367, 223);
             this.lblID.Name = "lblID";
             this.lblID.Size = new System.Drawing.Size(74, 49);
             this.lblID.TabIndex = 196;
@@ -624,7 +624,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::DVLD.Properties.Resources.credit_card_buyer;
-            this.pictureBox2.Location = new System.Drawing.Point(307, 170);
+            this.pictureBox2.Location = new System.Drawing.Point(298, 223);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(53, 53);
             this.pictureBox2.TabIndex = 48;
