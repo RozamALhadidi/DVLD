@@ -1,11 +1,14 @@
-﻿using System;
+﻿using DVLD_DataAccessLayers;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics.Contracts;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DVLD_DataAccessLayers;
 
 namespace DVLD_BusinessLayers
 {
@@ -49,7 +52,11 @@ namespace DVLD_BusinessLayers
             this.Mode = enMode.Update;
 
         }
+        public    clsPerson()
+        {
+            this.Mode = enMode.AddNew;
 
+        }
 
 
         public static clsPerson GetPersonByID(short PersonId)
@@ -59,7 +66,6 @@ namespace DVLD_BusinessLayers
               , Email = "", NationalityNo = "",
                 Phone = "", Address = "", ImagePath = "";
             DateTime DateOfBirth = DateTime.Now;
-
 
             if (clsPersonDataAccess.GetPersonByID(PersonId,ref NationalityNo, ref NationalityCountryID,
                ref FirstName,ref SecondName,ref ThirdName,ref LastName,ref DateOfBirth,
@@ -78,11 +84,11 @@ namespace DVLD_BusinessLayers
         }
         private bool _AddNewPerson()
         {
-            int id = clsPersonDataAccess.AddNewPerson(this.NationalityNo, this.NationalityCountryID, this.FirstName
+            this.PersonID = clsPersonDataAccess.AddNewPerson(this.NationalityNo, this.NationalityCountryID, this.FirstName
                 , this.SecondName, this.ThirdName, this.LastName, this.DateOfBirth, this.Gender, this.Email,this.Phone
                 , this.Address, this.ImagePath);
 
-            return (id != -1);
+            return (this.PersonID != -1);
               
         }
         private bool _UpdatePerson()
@@ -106,8 +112,6 @@ namespace DVLD_BusinessLayers
             return clsPersonDataAccess.GetAllPeopleForDGV();
         }
         
-
-
         public bool Save()
         {
             switch(Mode)
@@ -126,8 +130,50 @@ namespace DVLD_BusinessLayers
             }
             return false;
         }
+        public static bool IsValidName(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                return false;
 
-         
+            string pattern = @"^[a-zA-Z\s]{2,50}$";
+            return Regex.IsMatch(name.Trim(), pattern);
+        }
+        public static bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return true;
 
+            string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            return Regex.IsMatch(email.Trim(), pattern);
+        }
+        public static bool IsValidPhone(string phone)
+        {
+            if (string.IsNullOrWhiteSpace(phone))
+                return false;
+
+            string pattern = @"^\+?[0-9]{7,15}$";
+            return Regex.IsMatch(phone.Trim(), pattern);
+        }
+        public  bool CopyandSaveImg(string PeopleImagesFolder, string PersonSourceImgPath)
+        {
+            try
+            {
+                 if (!Directory.Exists(PeopleImagesFolder))
+                        Directory.CreateDirectory(PeopleImagesFolder);
+
+                    string NewFileName = Guid.NewGuid().ToString() + Path.GetExtension(PersonSourceImgPath);
+                string DestinationPath = Path.Combine(PeopleImagesFolder, NewFileName);
+                File.Copy(PersonSourceImgPath, DestinationPath,true);
+
+                this.ImagePath = NewFileName;
+
+                 return true;
+            }
+            catch
+            {
+                return false;
+            }
+            
+        }
     }
 }

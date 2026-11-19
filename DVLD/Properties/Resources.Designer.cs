@@ -73,6 +73,16 @@ namespace DVLD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap add_image {
+            get {
+                object obj = ResourceManager.GetObject("add-image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap assign {
             get {
                 object obj = ResourceManager.GetObject("assign", resourceCulture);
@@ -226,6 +236,16 @@ namespace DVLD.Properties {
         public static System.Drawing.Bitmap delete_user {
             get {
                 object obj = ResourceManager.GetObject("delete-user", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap disk__1_ {
+            get {
+                object obj = ResourceManager.GetObject("disk (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -726,6 +746,16 @@ namespace DVLD.Properties {
         public static System.Drawing.Bitmap id_card_clip_alt1 {
             get {
                 object obj = ResourceManager.GetObject("id-card-clip-alt1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap image_slash {
+            get {
+                object obj = ResourceManager.GetObject("image-slash", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

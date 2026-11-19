@@ -1,75 +1,129 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Runtime.InteropServices; // إضافة ضرورية للاتصال بنظام الويندوز
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-public class SlateComboBox : ComboBox
+namespace DVLD
 {
-    private const int WM_PAINT = 0xF;
-    private int buttonWidth = SystemInformation.VerticalScrollBarWidth;
-
-    // استدعاء مكتبة الويندوز لإيقاف الوميض وتأثيرات الماوس الافتراضية
-    [DllImport("uxtheme.dll", ExactSpelling = true, CharSet = CharSet.Unicode)]
-    private static extern int SetWindowTheme(IntPtr hwnd, string pszSubAppName, string pszSubIdList);
-
-    public SlateComboBox()
+    public class SlateComboBox : ComboBox
     {
-        this.DropDownStyle = ComboBoxStyle.DropDownList;
-        this.FlatStyle = FlatStyle.Flat;
-        this.BackColor = Color.FromArgb(30, 41, 59);
-        this.ForeColor = Color.FromArgb(248, 250, 252);
-    }
+        private const int WM_PAINT = 0xF;
+        private int buttonWidth = SystemInformation.VerticalScrollBarWidth;
+        private bool isHovered = false;
 
-    // بمجرد أن يتم إنشاء الكومبو بوكس على الشاشة، نقوم بفصل تأثيرات الويندوز عنه
-    protected override void OnHandleCreated(EventArgs e)
-    {
-        base.OnHandleCreated(e);
-        SetWindowTheme(this.Handle, "", ""); // هذا السطر يقتل الوميض الأبيض نهائياً
-    }
+        private readonly Color normalBorder = Color.FromArgb(51, 65, 85);
+        private readonly Color accentSkyBlue = Color.FromArgb(56, 189, 248);
 
-    protected override void WndProc(ref Message m)
-    {
-        base.WndProc(ref m);
+        [DllImport("uxtheme.dll", ExactSpelling = true, CharSet = CharSet.Unicode)]
+        private static extern int SetWindowTheme(IntPtr hwnd, string pszSubAppName, string pszSubIdList);
 
-        if (m.Msg == WM_PAINT)
+        public SlateComboBox()
         {
-            using (Graphics g = Graphics.FromHwnd(this.Handle))
+            this.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.FlatStyle = FlatStyle.Flat;
+            this.BackColor = Color.FromArgb(30, 41, 59);
+            this.ForeColor = Color.FromArgb(248, 250, 252);
+        }
+        private DateTime _lastDropDownClosed = DateTime.MinValue;
+
+        protected override void OnDropDownClosed(EventArgs e)
+        {
+            base.OnDropDownClosed(e);
+            _lastDropDownClosed = DateTime.Now;
+            this.Invalidate();
+        }
+
+        protected override void OnMouseDown(MouseEventArgs e)
+        {
+            base.OnMouseDown(e);
+
+            if (e.Button == MouseButtons.Left && !this.DroppedDown &&
+                (DateTime.Now - _lastDropDownClosed).TotalMilliseconds > 150)
             {
-                // 1. رسم الإطار الخارجي
-                Color borderColor = Color.FromArgb(51, 65, 85);
-                using (Pen pen = new Pen(borderColor, 2))
+                this.DroppedDown = true;
+            }
+        }
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            base.OnHandleCreated(e);
+            SetWindowTheme(this.Handle, "", "");
+        }
+
+        protected override void OnMouseEnter(EventArgs e)
+        {
+            base.OnMouseEnter(e);
+            isHovered = true;
+            this.Invalidate();
+        }
+
+        protected override void OnMouseLeave(EventArgs e)
+        {
+            base.OnMouseLeave(e);
+            isHovered = false;
+            this.Invalidate();
+        }
+
+        protected override void OnGotFocus(EventArgs e)
+        {
+            base.OnGotFocus(e);
+            this.Invalidate();
+        }
+
+        protected override void OnLostFocus(EventArgs e)
+        {
+            base.OnLostFocus(e);
+            this.Invalidate();
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+
+            if (m.Msg == WM_PAINT)
+            {
+                using (Graphics g = Graphics.FromHwnd(this.Handle))
                 {
-                    g.DrawRectangle(pen, 0, 0, this.Width - 1, this.Height - 1);
-                }
+                    bool isActive = isHovered || this.Focused || this.DroppedDown;
 
-                // 2. إعادة رسم مساحة الزر بالكامل (نفس كودك السابق)
-                Rectangle buttonRect = new Rectangle(this.Width - buttonWidth - 1, 1, buttonWidth, this.Height - 2);
-
-                using (SolidBrush brush = new SolidBrush(this.BackColor))
-                {
-                    g.FillRectangle(brush, buttonRect);
-                }
-
-                // 3. رسم السهم
-                Color arrowColor = Color.FromArgb(56, 189, 248);
-                using (SolidBrush arrowBrush = new SolidBrush(arrowColor))
-                {
-                    g.SmoothingMode = SmoothingMode.AntiAlias;
-
-                    int arrowWidth = 10;
-                    int arrowHeight = 5;
-                    int x = buttonRect.X + (buttonRect.Width - arrowWidth) / 2;
-                    int y = buttonRect.Y + (buttonRect.Height - arrowHeight) / 2 + 1;
-
-                    Point[] arrowPoints = new Point[]
+                    Rectangle buttonRect = new Rectangle(this.Width - buttonWidth - 2, 0, buttonWidth + 2, this.Height);
+                    using (SolidBrush brush = new SolidBrush(this.BackColor))
                     {
-                        new Point(x, y),
-                        new Point(x + arrowWidth, y),
-                        new Point(x + (arrowWidth / 2), y + arrowHeight)
-                    };
+                        g.FillRectangle(brush, buttonRect);
+                    }
 
-                    g.FillPolygon(arrowBrush, arrowPoints);
+                    using (SolidBrush arrowBrush = new SolidBrush(accentSkyBlue))
+                    {
+                        g.SmoothingMode = SmoothingMode.AntiAlias;
+
+                        int arrowWidth = 10;
+                        int arrowHeight = 5;
+                        int x = buttonRect.X + (buttonRect.Width - arrowWidth) / 2;
+                        int y = buttonRect.Y + (buttonRect.Height - arrowHeight) / 2 + 1;
+
+                        Point[] arrowPoints = new Point[]
+                        {
+                    new Point(x, y),
+                    new Point(x + arrowWidth, y),
+                    new Point(x + (arrowWidth / 2), y + arrowHeight)
+                        };
+
+                        g.FillPolygon(arrowBrush, arrowPoints);
+                    }
+
+                    if (this.Focused || this.DroppedDown)
+                    {
+                        using (Pen glowPen = new Pen(Color.FromArgb(90, accentSkyBlue), 4))
+                        {
+                            g.DrawRectangle(glowPen, 1, 1, this.Width - 3, this.Height - 3);
+                        }
+                    }
+
+                    Color borderColor = isActive ? accentSkyBlue : normalBorder;
+                    using (Pen pen = new Pen(borderColor, 2))
+                    {
+                        g.DrawRectangle(pen, 0, 0, this.Width - 1, this.Height - 1);
+                    }
                 }
             }
         }
