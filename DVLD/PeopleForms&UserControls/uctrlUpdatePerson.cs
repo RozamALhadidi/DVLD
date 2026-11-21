@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -136,12 +137,15 @@ namespace DVLD
                 return;
             }
 
+            string OldImgPath = Person.ImagePath;
+
             if(!_PersonImg)
             {
                 Person.ImagePath = "";
             }
             else if (_PersonImg && !string.IsNullOrEmpty(_PersonSourceImgPath))
             {
+
                 if (!Person.CopyandSaveImg(clsAppSettings.PeopleImagesFolder, _PersonSourceImgPath))
                 {
                     MessageBox.Show("Error saving person image!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -166,6 +170,19 @@ namespace DVLD
 
             if (Person.Save())
             {
+                if(!string.IsNullOrEmpty(OldImgPath) && OldImgPath!=Person.ImagePath)
+                {
+                    string fullOldImgPath = clsAppSettings.GetPersonImageFullPath(OldImgPath);
+                    try
+                    {
+                        if (File.Exists(fullOldImgPath))
+                            File.Delete(fullOldImgPath);
+                    }
+                    catch
+                    {
+                        ////
+                    }
+                }
                 AfterSuccessfullSave();
             }
             else
