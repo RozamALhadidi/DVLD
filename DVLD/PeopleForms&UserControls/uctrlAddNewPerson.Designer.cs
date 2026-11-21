@@ -590,6 +590,7 @@
             this.dtpDateOfBirth.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(85)))), ((int)(((byte)(105)))));
             this.dtpDateOfBirth.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(189)))), ((int)(((byte)(248)))));
             this.dtpDateOfBirth.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
+            this.dtpDateOfBirth.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dtpDateOfBirth.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.dtpDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateOfBirth.Location = new System.Drawing.Point(935, 165);
@@ -704,7 +705,7 @@
             this.Controls.Add(this.crownLabel17);
             this.Controls.Add(this.crownLabel19);
             this.Name = "uctrlAddNewPerson";
-            this.Size = new System.Drawing.Size(1722, 993);
+            this.Size = new System.Drawing.Size(1800, 1200);
             this.Load += new System.EventHandler(this.uctrlAddNewPerson_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.OuterPanel.ResumeLayout(false);

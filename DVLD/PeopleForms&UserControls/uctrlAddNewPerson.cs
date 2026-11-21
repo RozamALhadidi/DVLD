@@ -25,9 +25,16 @@ namespace DVLD.People
         public uctrlAddNewPerson()
         {
             InitializeComponent();
-            Person = new clsPerson();
+            this.BackColor = AppTheme.FormBackColor;
+            this.Size = AppTheme.UserFormsSize;
         }
+        private void uctrlAddNewPerson_Load(object sender, EventArgs e)
+        {
 
+            Person = new clsPerson();
+            PrepareControls();
+
+        }
         private bool CheckDataBeforeSave()
         {
             if (!clsPerson.IsValidName(txtFname.Text))
@@ -73,13 +80,7 @@ namespace DVLD.People
 
             return true;
         }
-        private void uctrlAddNewPerson_Load(object sender, EventArgs e)
-        {
-            this.BackColor = AppTheme.FormBackColor;
-
-            PrepareControls();
-
-        }
+        
         private void PrepareControls()
         {
             DataTable dtCountries = clsCountries.GetAllCountries();
