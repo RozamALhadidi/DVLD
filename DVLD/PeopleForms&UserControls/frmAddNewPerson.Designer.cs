@@ -33,17 +33,16 @@
             // 
             // uctrlAddNewPerson1
             // 
-            this.uctrlAddNewPerson1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.uctrlAddNewPerson1.Location = new System.Drawing.Point(7, 16);
             this.uctrlAddNewPerson1.Name = "uctrlAddNewPerson1";
-            this.uctrlAddNewPerson1.Size = new System.Drawing.Size(1746, 945);
+            this.uctrlAddNewPerson1.Size = new System.Drawing.Size(1656, 965);
             this.uctrlAddNewPerson1.TabIndex = 0;
             // 
             // frmAddNewPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
             this.ClientSize = new System.Drawing.Size(1919, 1005);
             this.Controls.Add(this.uctrlAddNewPerson1);
             this.Name = "frmAddNewPerson";

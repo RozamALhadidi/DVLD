@@ -251,12 +251,13 @@ namespace DVLD
                 this.Image.Dispose();
                 this.Image = null;
             }
-
-            if (!string.IsNullOrWhiteSpace(imagePath) && File.Exists(imagePath))
+            string sourceFile = clsAppSettings.GetPersonImageFullPath(imagePath);
+            if (!string.IsNullOrWhiteSpace(imagePath) && File.Exists(sourceFile))
             {
                 try
                 {
-                    byte[] bytes = File.ReadAllBytes(imagePath);
+                    
+                    byte[] bytes = File.ReadAllBytes(sourceFile);
                     using (MemoryStream ms = new MemoryStream(bytes))
                     using (Image temp = Image.FromStream(ms))
                     {

@@ -28,20 +28,20 @@ namespace DVLD.People
         {
             clsPerson Person = clsPerson.GetPersonByID(PersonID);
 
-            lblAddress.Text = Person.Address.ToString();
+            //lblAddress.Text = Person.Address.ToString();
 
-            clsCountries Country = clsCountries.FindCountry(Person.NationalityCountryID);
-            lblCountry.Text = (Country != null) ? Country.CountryName.ToString() : "Unknown";
+            //clsCountries Country = clsCountries.FindCountry(Person.NationalityCountryID);
+            //lblCountry.Text = (Country != null) ? Country.CountryName.ToString() : "Unknown";
          
 
-            lblDateOfBirth.Text = Person.DateOfBirth.ToString();
-            lblEmail.Text = Person.Email.ToString();
-            lblGender.Text = (Person.Gender == 0) ? "Male" : "Female";
-            lblName.Text = Person.FirstName.ToString() + " " + Person.SecondName.ToString() +
-                " " + Person.ThirdName.ToString() + " " + Person.LastName.ToString();
-            lblNationalNo.Text = Person.NationalityNo.ToString();
-            lblPersonID.Text = Person.PersonID.ToString();
-            lblPhone.Text = Person.Phone.ToString();
+            //lblDateOfBirth.Text = Person.DateOfBirth.ToString();
+            //lblEmail.Text = Person.Email.ToString();
+            //lblGender.Text = (Person.Gender == 0) ? "Male" : "Female";
+            //lblName.Text = Person.FirstName.ToString() + " " + Person.SecondName.ToString() +
+            //    " " + Person.ThirdName.ToString() + " " + Person.LastName.ToString();
+            //lblNationalNo.Text = Person.NationalityNo.ToString();
+            //lblPersonID.Text = Person.PersonID.ToString();
+            //lblPhone.Text = Person.Phone.ToString();
        //     pbPerson.SizeMode = PictureBoxSizeMode.Zoom;
 
             _PersonID = Person.PersonID;

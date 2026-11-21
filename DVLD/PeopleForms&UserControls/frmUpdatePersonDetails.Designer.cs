@@ -43,8 +43,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
-            this.ClientSize = new System.Drawing.Size(1801, 961);
+            this.ClientSize = new System.Drawing.Size(1801, 1066);
             this.Controls.Add(this.uctrlUpdatePerson1);
             this.Name = "frmUpdatePersonDetails";
             this.Text = "frmEditPersonDetails";

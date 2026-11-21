@@ -34,12 +34,12 @@ namespace DVLD_DataAccessLayers
                 
 
                 if(reader.Read())
-                {                   
-                    NationalNo = (string)reader["NationalNo"];
+                {
+                    NationalNo = reader["NationalNo"] != DBNull.Value ? (string)reader["NationalNo"] : "";
                     NationalityCountryID = Convert.ToInt16(reader["NationalityCountryID"]);
                     FirstName = (string)reader["FirstName"];
                     SecondName = (string)reader["SecondName"];
-                    ThirdName = (string)reader["ThirdName"];
+                    ThirdName = reader["ThirdName"]!=DBNull.Value?(string)reader["ThirdName"]:"";
                     LastName = (string)reader["LastName"];
                    
                     DateOfBirth = reader["DateOfBirth"] != DBNull.Value ?
@@ -47,7 +47,7 @@ namespace DVLD_DataAccessLayers
 
                     gender = Convert.ToInt16(reader["Gendor"]);
                     phone = (string)reader["Phone"];
-                    email = (string)reader["Email"];
+                    email = reader["Email"] != DBNull.Value ? (string)reader["Email"] : "";
                     address = (string)reader["Address"];
                     ImagePath = reader["ImagePath"]==DBNull.Value?
                         "":reader["ImagePath"].ToString();
@@ -167,7 +167,7 @@ namespace DVLD_DataAccessLayers
                          ThirdName = @ThirdName,
                          LastName = @LastName,
                          DateOfBirth = @DateOfBirth,
-                         Gender = @Gender,
+                         Gendor = @Gender,
                          Email = @Email,
                          Phone = @Phone,
                          Address = @Address,
@@ -184,10 +184,9 @@ namespace DVLD_DataAccessLayers
             cmd.Parameters.AddWithValue("@ThirdName", string.IsNullOrEmpty(ThirdName) ? (object)DBNull.Value : ThirdName);
             cmd.Parameters.AddWithValue("@LastName", LastName);
             cmd.Parameters.AddWithValue("@DateOfBirth", DateOfBirth);
-            cmd.Parameters.AddWithValue("@Gendor", Gender);
+            cmd.Parameters.AddWithValue("@Gender", Gender);
             cmd.Parameters.AddWithValue("@Address", Address);
             cmd.Parameters.AddWithValue("@Phone", Phone);
-            cmd.Parameters.AddWithValue("@Email", Email);
 
             cmd.Parameters.AddWithValue("@Email", string.IsNullOrEmpty(Email) ? (object)DBNull.Value : Email);
             cmd.Parameters.AddWithValue("@ImagePath", string.IsNullOrEmpty(ImagePath) ? (object)DBNull.Value : ImagePath);
