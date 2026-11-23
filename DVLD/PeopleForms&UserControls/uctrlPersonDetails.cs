@@ -16,6 +16,7 @@ namespace DVLD.People
     {
         public event Action OnCloseClicked;
         short _PersonID = -1;
+        clsPerson Person;
         public uctrlPersonDetails()
         {
 
@@ -24,42 +25,55 @@ namespace DVLD.People
         }
 
         public void ShowDetails(short PersonID)
-
         {
-            clsPerson Person = clsPerson.GetPersonByID(PersonID);
-
-            //lblAddress.Text = Person.Address.ToString();
-
-            //clsCountries Country = clsCountries.FindCountry(Person.NationalityCountryID);
-            //lblCountry.Text = (Country != null) ? Country.CountryName.ToString() : "Unknown";
-         
-
-            //lblDateOfBirth.Text = Person.DateOfBirth.ToString();
-            //lblEmail.Text = Person.Email.ToString();
-            //lblGender.Text = (Person.Gender == 0) ? "Male" : "Female";
-            //lblName.Text = Person.FirstName.ToString() + " " + Person.SecondName.ToString() +
-            //    " " + Person.ThirdName.ToString() + " " + Person.LastName.ToString();
-            //lblNationalNo.Text = Person.NationalityNo.ToString();
-            //lblPersonID.Text = Person.PersonID.ToString();
-            //lblPhone.Text = Person.Phone.ToString();
-       //     pbPerson.SizeMode = PictureBoxSizeMode.Zoom;
-
-            _PersonID = Person.PersonID;
-
-            Image defaultImg = (Person.Gender == 0) ? Properties.Resources.MaleDefault : Properties.Resources.FemaleDefault;
-         //   pbPerson.LoadImageSafe(Person.ImagePath, defaultImg);
+            _GetPersonData(PersonID);
 
         }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             OnCloseClicked?.Invoke();
         }
 
-        private void btnEditInfo_Click(object sender, EventArgs e)
+        private void btnEditPerson_Click(object sender, EventArgs e)
         {
-            Form frm = new frmUpdatePersonDetails(_PersonID);
-            frm.ShowDialog();
+            if (_PersonID == -1) return;
+            using (frmUpdatePersonDetails frm = new frmUpdatePersonDetails(_PersonID))
+            {
+                frm.ShowDialog();
+            }
+            _GetPersonData(_PersonID);
+        }
+        private void _GetPersonData(short PersonID)
+        {
+            Person = clsPerson.GetPersonByID(PersonID);
+            if (Person == null)
+            {
+                _PersonID = -1;
+                MessageBox.Show($"No Person with ID = {PersonID}", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            _PersonID = Person.PersonID;
+
+            lblAddress.Text = Person.Address ?? "";
+
+            clsCountries Country = clsCountries.FindCountry(Person.NationalityCountryID);
+            lblCountry.Text = (Country != null) ? Country.CountryName.ToString() : "Unknown";
+
+            lblDateofBirth.Text = Person.DateOfBirth.ToShortDateString();
+            lblEmail.Text = Person.Email ?? "";
+            lblGender.Text = (Person.Gender == 0) ? "Male" : "Female";
+            lblPhone.Text = Person.Phone.ToString();
+            lblNatioN.Text = Person.NationalityNo ?? "";
+
+            lblFullName.Text = string.Join(" ", new[] { Person.FirstName, Person.SecondName, Person.ThirdName, Person.LastName }
+            .Where(s => !string.IsNullOrWhiteSpace(s)));
+
+            lblID.Text = Person.PersonID.ToString();
+
+            Image defaultImg = (Person.Gender == 0) ? Properties.Resources.man_head : Properties.Resources.woman_head;
+            Image coloredDefault = AppTheme.ChangeIconColor(defaultImg, ColorTranslator.FromHtml("#64748B"));
+            Image finalResizedImage = SlatePictureBox.ResizeImage(coloredDefault, 100, 100);
+            pbPerson.LoadImageSafe(Person.ImagePath, finalResizedImage);
         }
     }
 }

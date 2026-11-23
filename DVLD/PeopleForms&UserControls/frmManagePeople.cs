@@ -267,6 +267,21 @@ namespace DVLD.People
            
         }
 
-        
+        private void dgvManagePeople_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+            short id = GetSelectedID();
+            if (id == -1)
+                return;
+
+            using (frmShowPersonDetails frm = new frmShowPersonDetails(id))
+            {
+                frm.ShowDialog();
+            }
+
+            RefreshData();
+        }
     }
 }

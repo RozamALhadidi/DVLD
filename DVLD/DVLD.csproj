@@ -127,6 +127,9 @@
     <Compile Include="Theme\SlateDateTimePicker.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Theme\SlatePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Theme\SlatePictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -498,6 +501,8 @@
   <ItemGroup>
     <None Include="Resources\add-image.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\user-pen %281%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

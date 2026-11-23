@@ -36,7 +36,7 @@
             this.uctrlUpdatePerson1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
             this.uctrlUpdatePerson1.Location = new System.Drawing.Point(85, 51);
             this.uctrlUpdatePerson1.Name = "uctrlUpdatePerson1";
-            this.uctrlUpdatePerson1.Size = new System.Drawing.Size(1660, 915);
+            this.uctrlUpdatePerson1.Size = new System.Drawing.Size(1659, 966);
             this.uctrlUpdatePerson1.TabIndex = 0;
             // 
             // frmUpdatePersonDetails

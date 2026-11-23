@@ -33,18 +33,18 @@
             // 
             // uctrlPersonDetails1
             // 
-            this.uctrlPersonDetails1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.uctrlPersonDetails1.Location = new System.Drawing.Point(32, 129);
+            this.uctrlPersonDetails1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
+            this.uctrlPersonDetails1.Location = new System.Drawing.Point(37, 30);
             this.uctrlPersonDetails1.Name = "uctrlPersonDetails1";
-            this.uctrlPersonDetails1.Size = new System.Drawing.Size(1608, 852);
+            this.uctrlPersonDetails1.Size = new System.Drawing.Size(1678, 922);
             this.uctrlPersonDetails1.TabIndex = 0;
             // 
             // frmShowPersonDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ClientSize = new System.Drawing.Size(1820, 1035);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
+            this.ClientSize = new System.Drawing.Size(1880, 1107);
             this.Controls.Add(this.uctrlPersonDetails1);
             this.Name = "frmShowPersonDetails";
             this.Text = "frmShowPersonDetails";

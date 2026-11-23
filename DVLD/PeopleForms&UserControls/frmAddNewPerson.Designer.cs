@@ -33,6 +33,7 @@
             // 
             // uctrlAddNewPerson1
             // 
+            this.uctrlAddNewPerson1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
             this.uctrlAddNewPerson1.Location = new System.Drawing.Point(7, 16);
             this.uctrlAddNewPerson1.Name = "uctrlAddNewPerson1";
             this.uctrlAddNewPerson1.Size = new System.Drawing.Size(1656, 965);
