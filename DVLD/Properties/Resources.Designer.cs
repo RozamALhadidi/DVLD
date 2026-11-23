@@ -1003,6 +1003,16 @@ namespace DVLD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap user_pen__1_ {
+            get {
+                object obj = ResourceManager.GetObject("user-pen (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap user_pen1 {
             get {
                 object obj = ResourceManager.GetObject("user-pen1", resourceCulture);

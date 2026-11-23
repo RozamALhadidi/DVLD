@@ -48,8 +48,8 @@
             this.sendEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.phoneCallToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pbUsersTitle = new System.Windows.Forms.PictureBox();
-            this.txtFilter = new SlateTextBox();
-            this.cbFilter = new SlateComboBox();
+            this.txtFilter = new DVLD.SlateTextBox();
+            this.cbFilter = new DVLD.SlateComboBox();
             this.btnAddUser = new DVLD.SlateDarkButton();
             this.btnClose = new DVLD.SlateDarkButton();
             this.label2 = new System.Windows.Forms.Label();
@@ -112,6 +112,7 @@
             this.dgvManagePeople.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvManagePeople.Size = new System.Drawing.Size(1994, 583);
             this.dgvManagePeople.TabIndex = 0;
+            this.dgvManagePeople.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvManagePeople_CellDoubleClick);
             this.dgvManagePeople.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvManagePeople_CellFormatting);
             this.dgvManagePeople.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvManagePeople_CellMouseDown);
             // 
